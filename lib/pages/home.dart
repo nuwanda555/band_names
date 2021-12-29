@@ -1,5 +1,7 @@
 import 'package:band_names/models/band.dart';
+import 'package:band_names/services/socket_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,9 +20,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final socketService = Provider.of<SocketService>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('BandNames', style: TextStyle(color: Colors.black87)),
+        title: Text(socketService.serverStatus.toString(),
+            style: TextStyle(color: Colors.black87)),
         backgroundColor: Colors.white,
         elevation: 1,
       ),
